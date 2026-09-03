@@ -1,0 +1,110 @@
+WhiteLabelMD contact-form embed, removed from contact-us/index.html on 2026-09-03
+while their hosted form still shows TaylazHealth branding. To restore it once
+WhiteLabelMD rebrands site 412, paste the block below back in place of the
+<form class="contact-form"> ... </script> block inside <div class="block contact__form">.
+==============================================================================
+<!-- WLMD BEGIN wlmdInpageEmbed --><script>function showIntakeForm() { return showIntakeFormInline(); }
+function myCloseActions() { elog("nothing to do for myCloseActions"); }</script>
+    
+    <!-- WLMD BEGIN wlmdIntakeEmbed -->
+<div class="form" id="intake_placement">
+       
+     <script type="text/javascript">
+     setVariable("steps",{"step1":"262044322211945","checkout":[]});
+     const steps = getVariable("steps");
+     var urlParams = new URLSearchParams(window.location.search); //get all parameters
+     var tuid = urlParams.get("step");
+     if(!tuid) {
+       tuid = "1";
+     }
+     window.jotform_id = steps["step" + tuid];
+     
+     
+     
+     window.mystage = "1";
+     window.be_quiet = true;
+     window.LOOP_ATTEMPTS = 0;
+     window.client_ip = '';
+     window.forced_uniqueId = '';
+     window.directives = {"id":"1","is_default":"1","s3_bucket_name":"static-v1-taylazhealth","cloudfront_distribution_id":"E3UDE6EC6F2N7G","default_checkout_args":"uniqueId={uniqueId}&product={product}&cdata={cdata}&rpage={rpage}","intake_js_include":"\/wp-content\/uploads\/common\/wlmd-intake-default.js","header_html":"<style>#intake_placement iframe {\n  min-width: 100% !important;\n}\n#myModal-mdl {\nz-index: 9999999999999999 !important;\n}\n<\/style><style>#intake_placement iframe {min-width: 100% !important;}<\/style><style>#intake_placement iframe {background-color: white !important;}<\/style><script>function checkoutTrackingString() {\n        var ret = \"\";\n        \n        return ret; \n    }<\/script><!-- no wlmd_cfg_tracking_args: \"\" -->","flag_track_ga_questions":"0","flag_record_wlmd_leads":"0","order_processing_url":"\/order-processing\/","receipt_url":"\/order-receipt\/","ga_setup_accounts":null,"fb_setup_accounts":null,"tracking_args":"","inserted":"2026-07-22 14:31:49","updated":"2026-07-22 14:31:49","notes":"Version  initial setup.","directives_id":"1","version":"DEFAULT","categories":{"contact_us":"4","weight_loss":"2","weight_loss_checkin":"3","weight_loss_order_first":"1"},"intake_acct_type":"jotform","site_id":"412"};
+        
+     function addUrlWidWhenReady() {
+         if(typeof window.addUrlWidKeys !== "function") {
+            console.warn("WARNING: addUrlWidWhenReady addUrlWidKeys not a function (yet).");
+            setTimeout(addUrlWidWhenReady,100);
+         } else {
+           addUrlWidKeys();
+           // console.log("finished addUrlWidKeys");
+         }
+     }   
+     function pageStarter() {
+         if(typeof doPageFormOnload === "function") {
+            // ok!
+         } else {
+             console.log("functions (doPageFormOnload) not loaded yet. one moment!");
+             return setTimeout(pageStarter,100);
+         } 
+         addUrlWidWhenReady();
+         if(window.jotform_id) {
+             doPageFormOnload();
+             updateJotform_when_ready();
+             
+         } else {
+             window.jotformIsReady=true;
+             elog("NOTE: no step1 jotform_id so nothing to updateJotform_when_ready, and skipped it."); 
+             //alert("wait");
+         }
+     }
+     function setIp() {
+        fetch('https://api.whitelabelmd.com/answers/myip/lHJGqgqw34')
+           .then(
+               data => ( (window.client_ip=data.ip) || elog(data.ip))
+           );
+     }
+     setIp();
+     function hostedIntakeCtrlScript() {
+       return window.location.origin + "/ctrl/";
+     }
+     pageStarter();     
+    </script>
+     <script id="jfef" type="text/javascript" src="https://forms.whitelabelmd.com/jsform/262044322211945?"></script>
+  </div>
+        <!-- BEGIN _postFormScript-->
+<script>function addListenersWhenFuncExist() {
+        if(typeof window.domLoadedModal === "function") {
+            elog("add EventListeners",0);
+            document.addEventListener("DOMContentLoaded",domLoadedModal);
+            document.addEventListener("DOMContentLoaded",domLoadedIntake);
+        } else {
+            elog("wait for domLoadedModal",1);
+            setTimeout(addListenersWhenFuncExist,100);
+        }
+    }
+    function setupModalButtons() {
+       var count =0;   
+    if(document.getElementById("myBtn-mdl")) {
+         document.getElementById("myBtn-mdl").onclick = function () {
+             showIntakeForm();
+             //document.getElementById("intake_form_area").style.display="block";
+         }
+         count++;
+       }
+       const BUTTONS = document.getElementsByClassName("mybtnmdl")
+       // console.log(BUTTONS);
+       for (let index = 0; index < BUTTONS.length; ++index) {
+           BUTTONS[index].addEventListener("click",showIntakeForm);
+            count++;
+       }
+       if(count == 0 ) {
+           setTimeout(setupModalButtons, 200);
+       }
+    }
+    window.addEventListener("load", (event) => {
+        addListenersWhenFuncExist();
+        setupModalButtons();
+    });
+    </script><!-- END _postFormScript-->
+
+        <!-- WLMD - END wlmdIntakeEmbed -->
+        
+<!-- WLMD END wlmdInpageEmbed -->
